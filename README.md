@@ -110,3 +110,4 @@ Lien du repo DockerHub : https://hub.docker.com/r/germaindftn/devops_tp1
 
 Lien du repo DockerHub : https://hub.docker.com/r/germaindftn/devops-tp2
 
+Comment j'ai fait :
