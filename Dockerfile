@@ -6,8 +6,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY api.py .
+COPY app.py .
 
 EXPOSE 5000
 
-CMD ["python", "api.py"]
+CMD ["python", "app.py"]
