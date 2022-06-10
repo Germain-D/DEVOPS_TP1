@@ -11,8 +11,4 @@ COPY . .
 
 EXPOSE 5000
 
-ENV PYTHONPATH "${PYTHONPATH}:/app"
-
-ENV PYTHONUNBUFFERED 1
-
 CMD ["python", "app.py"]
