@@ -3,14 +3,8 @@ import os, requests
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-
-from dotenv import load_dotenv
-load_dotenv()
-
-
-APIKEY = os.environ['APIKEY']  # reads the environment variable
-LAT = os.environ['LAT']
-LONG = os.environ['LONG']
+app.config["DEBUG"] = True
+app.config.from_object('config.Config')
 
 @app.route('/', methods=['GET'])
 def home():
