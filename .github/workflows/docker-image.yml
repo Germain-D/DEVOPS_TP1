@@ -20,3 +20,6 @@ jobs:
         registry: germaindftn/devops-tp2
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
+        
+        
+        
