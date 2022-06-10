@@ -1,17 +1,20 @@
 from flask import request, jsonify, Flask
 import os, requests
 from datetime import datetime, timedelta
-# docker ne copie pas le .env, on le passe dans la commande: export APIKEY=MYAPIKEY
-# docker run -p 5000:5000 --env APIKEY=$APIKEY --rm myapi
 
 app = Flask(__name__)
-app.config["DEBUG"] = True
-app.config.from_object('config.Config')
+#app.config["DEBUG"] = True
+#app.config.from_object('config.Config')
 
+import os
+
+APIKEY = os.environ['APIKEY']  # reads the environment variable
+LAT = os.environ['LAT']
+LONG = os.environ['LONG']
 
 @app.route('/', methods=['GET'])
 def home():
-    uri = f"https://api.openweathermap.org/data/2.5/weather?lat={app.config['LAT']}&lon={app.config['LONG']}&appid={app.config['APIKEY']}&units=metric"
+    uri = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LONG}&appid={APIKEY}&units=metric"
     res = requests.get(uri)
     if res.status_code == 200:
 
