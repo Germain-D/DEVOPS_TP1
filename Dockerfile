@@ -6,12 +6,12 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY app.py .
-
 COPY config.py .
 
-EXPOSE 5000
+RUN python3 config.py
 
-CMD ["python", "config.py"]
+COPY app.py .
+
+EXPOSE 5000
 
 CMD ["python", "app.py"]
