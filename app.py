@@ -3,10 +3,8 @@ import os, requests
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-#app.config["DEBUG"] = True
-#app.config.from_object('config.Config')
 
-import os
+
 
 APIKEY = os.environ['APIKEY']  # reads the environment variable
 LAT = os.environ['LAT']
