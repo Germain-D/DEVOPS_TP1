@@ -3,7 +3,7 @@ import os, requests
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.config["DEBUG"] = True
+
 app.config.from_object('config.Config')
 
 @app.route('/', methods=['GET'])
