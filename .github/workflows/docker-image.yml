@@ -17,7 +17,7 @@ jobs:
       name: Login to DockerHub
       uses: docker/login-action@v2
       with:
-        registry: germaindftn/devops-tp2
+        registry: https://hub.docker.com/r/germaindftn/devops-tp2
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         
