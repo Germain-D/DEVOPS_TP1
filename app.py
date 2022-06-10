@@ -8,7 +8,7 @@ app.config.from_object('config.Config')
 
 @app.route('/', methods=['GET'])
 def home():
-    uri = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LONG}&appid={APIKEY}&units=metric"
+    uri = f"https://api.openweathermap.org/data/2.5/weather?lat={app.config['LAT']}&lon={app.config['LONG']}&appid={app.config['APIKEY']}&units=m"
     res = requests.get(uri)
     if res.status_code == 200:
 
