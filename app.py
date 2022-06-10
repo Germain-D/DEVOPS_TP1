@@ -4,6 +4,8 @@ from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
+from dotenv import load_dotenv
+load_dotenv()
 
 
 APIKEY = os.environ['APIKEY']  # reads the environment variable
