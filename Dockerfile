@@ -12,4 +12,6 @@ COPY config.py .
 
 EXPOSE 5000
 
+CMD ["python", "config.py"]
+
 CMD ["python", "app.py"]
