@@ -1,7 +1,7 @@
 
 FROM python:3.8-buster
 
-WORKDIR /devops-tp2
+WORKDIR /app
 
 COPY requirements.txt .
 
