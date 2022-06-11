@@ -110,4 +110,79 @@ Lien du repo DockerHub : https://hub.docker.com/r/germaindftn/devops_tp1
 
 Lien du repo DockerHub : https://hub.docker.com/r/germaindftn/devops-tp2
 
-Comment j'ai fait : a
+## wrapper -> api :
+
+Pour cela j'ai utilisé flask.
+
+J'ai ensuite créer un fichier config.py qui va se charger de récuperer les variables d'environnements comme la clef API ainsi que la latitude et la longitude.
+
+> APIKEY = os.environ.get('APIKEY')
+
+Puis le fichier app.py qui contient l'application flask.
+
+----
+## Automatisation avec les actions GitHub :
+
+````yml
+
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - 
+        uses: actions/checkout@v2
+        name: Check out code
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ${{ secrets.USERNAME }}/devops-tp2:latest        
+        
+
+````
+
+Dans GitHub on configure deux secrets : notre USERNAME et notre PASSWORD DockerHub.
+
+A chaque push sur la branche main, on build et on push l'image sur DockerHub.
+
+----
+## résultats :
+
+Dans un premier terminal on lance :
+````shell
+docker run  --network host  --env LAT="5.902785" --env LONG="102.754175" --env APIKEY=240aa650f4db4e154a07d0459c30a347 germaindftn/devops-tp2
+ ````
+![](image/p1.png ).
+
+En allant à l'adresse http://192.168.1.19:8081 ou http://127.0.0.1:8081 on obtient :
+
+![](image/p3.png ).
+
+````shell
+curl "http://localhost:8081/?lat=5.902785&lon=102.754175"
+````
+![](image/p2.png ).
+
+
+
+
+
+
